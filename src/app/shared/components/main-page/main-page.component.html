@@ -1,0 +1,19 @@
+<div class="flex">
+    <div class="card-wrapper" *ngFor="let user of userList">
+       <a [routerLink]="['/user', user.id]">
+        <div class="image">
+            <img [src]="user.imageUrl+'?v='+user.id" alt="{{user.name}}">
+        </div>
+        <div class="content">
+            <p><strong>{{user.prefix}}</strong><strong>{{user.name}}</strong><strong>{{user.lastName}}</strong></p>
+            <p>{{user.title}}</p>
+        </div>
+       </a>
+    </div>
+</div>
+<div class="pagination">
+    <button *ngIf="pagination.current >2" (click)="firstPage()">first page</button>
+    <button *ngIf="pagination.previousPage" (click)="previousPage()">previous</button>
+    <span>{{pagination.current}}</span>
+    <button (click)="nextPage()">next</button>
+</div>

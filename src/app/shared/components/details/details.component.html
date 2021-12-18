@@ -1,0 +1,58 @@
+<div class="main-wrapper">
+    <div class="user-details">
+        <div class="user-image" *ngIf="UserDetails.imageUrl">
+            <img [src]="UserDetails.imageUrl + '?v=' + UserDetails.id" alt="{{UserDetails.name}}">
+        </div>
+        <div class="user-info">
+            <div class="title">
+                <p>user name : 
+                    <strong>{{UserDetails.prefix}} </strong>
+                    <strong>{{UserDetails.name}}</strong>
+                    <strong>{{UserDetails.lastName}}</strong>
+                
+                </p>
+                <p>{{UserDetails.title}}</p>
+            </div>
+            <ul>
+                <li>email :<strong>{{UserDetails.email}}</strong></li>
+                <li>ip address : <strong>{{UserDetails.ip}}</strong></li>
+                <li>job area : <strong>{{UserDetails.jobArea}}</strong></li>
+                <li>job description : <strong>{{UserDetails.jobDescriptor}}</strong></li>
+                <li>job type : <strong>{{UserDetails.jobType}}</strong></li>
+            </ul>
+        </div>
+        <div class="user-addresses" *ngIf="UserDetails.company">
+            <p>
+                <strong>{{UserDetails.company.name}} </strong>
+                <strong>{{UserDetails.company.suffix}}</strong>
+            </p>
+            <ul>
+                <li>city : <strong>{{UserDetails.address.city}}</strong></li>
+                <li>country : <strong>{{UserDetails.address.country}}</strong></li>
+                <li>state : <strong>{{UserDetails.address.state}}</strong></li>
+                <li>street address : <strong>{{UserDetails.address.streetAddress}}</strong></li>
+                <li>zip : <strong>{{UserDetails.address.zipCode}}</strong></li>
+            </ul>
+        </div>
+    </div>
+    <div class="friend-list">
+        <div class="card-wrapper" *ngFor="let friend of friendList">
+             <div class="image">
+                 <img [src]="friend.imageUrl + '?v=' + friend.id" alt="{{friend.name}}">
+             </div>
+             <div class="content">
+                 <p><strong>{{friend.prefix}}</strong><strong>{{friend.name}}</strong><strong>{{friend.lastName}}</strong></p>
+                 <p>{{friend.title}}</p>
+             </div>
+         </div>
+    </div>
+    <div class="pagination">
+        <button *ngIf="pagination.current >2" (click)="firstPage()">first page</button>
+        <button *ngIf="pagination.previousPage" (click)="previousPage()">previous</button>
+        <span>{{pagination.current}}</span>
+        <button (click)="nextPage()">next</button>
+    </div>
+</div>
+<div class="back-button">
+    <a routerLink="/">main page</a>
+</div>
